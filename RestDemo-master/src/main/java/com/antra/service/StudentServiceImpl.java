@@ -23,14 +23,6 @@ public class StudentServiceImpl implements StudentService {
 
 	public List<Student> findAllStudents() {
 		List<StudentEntity> students = userRepo.findAll();
-		/*
-		 * ArrayList al=new ArrayList();
-		 * 
-		 * for(int i=0;i<users.size();i++) { User user=new User(); UserEntity
-		 * userEntity=(UserEntity)users.get(i); user.setId(userEntity.getId());
-		 * user.setName(userEntity.getName()); user.setAge(userEntity.getAge());
-		 * user.setSalary(userEntity.getSalary()); al.add(user); } return al;
-		 */
 
 		return students.stream().map(e -> new Student(e.getId(), e.getName(), e.getMajor(), e.getGrade()))
 				.collect(Collectors.toList());
